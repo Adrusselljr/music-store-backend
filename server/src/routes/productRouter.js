@@ -6,4 +6,8 @@ productRouter.get('/get-products', async (req, res, next) => {
     return ProductService.getProducts(req, res, next)
 })
 
+productRouter.post('/add-product', async (req, res, next) => {
+    return ProductService.addProduct(req, res, next)
+})
+
 module.exports = productRouter

@@ -11,6 +11,20 @@ const getProducts = async (req, res, next) => {
     }
 }
 
+const addProduct= async (req, res, next) => {
+    try {
+        const productData = req.body.productData
+        const newProduct = new ProductModel(productData)
+        await newProduct.save()
+        res.send(req.body)
+        console.log('productData ', productData)
+    }
+    catch (err) {
+        console.log({'error': err})
+    }
+}
+
 module.exports = {
-    getProducts
+    getProducts,
+    addProduct
 }

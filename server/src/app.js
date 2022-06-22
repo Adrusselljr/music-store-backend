@@ -1,7 +1,8 @@
 require("dotenv").config()
-const express = require('express')
 const cors = require('cors')
+const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const productRouter = require('./routes/productRouter')
 
 const app = express()
@@ -12,9 +13,8 @@ mongoose
 .then(() => console.log('Established a connection to the database'))
 .catch(err => console.log('Something went wrong when connecting to the database ', err))
 
-// mongoose.set('debug', true)
-
 app.use(cors())
+app.use(bodyParser.json())
 app.use(productRouter)
 
 app.get('/', () => {
